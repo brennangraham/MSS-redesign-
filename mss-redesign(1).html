@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MSS | Military Sales & Service Co. - Global Military Exchange Solutions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700;800&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a2332;
+            --secondary: #2c3e50;
+            --accent: #c8102e;
+            --gold: #d4af37;
+            --light: #f8f9fa;
+            --text: #2c3e50;
+            --text-light: #6c757d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 10px,
+                    rgba(255, 255, 255, 0.02) 10px,
+                    rgba(255, 255, 255, 0.02) 20px
+                );
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            color: white;
+            max-width: 1200px;
+            padding: 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 5rem;
+            letter-spacing: 0.2em;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, white 0%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.5)); }
+            50% { filter: drop-shadow(0 0 40px rgba(212, 175, 55, 0.8)); }
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            font-weight: 300;
+            letter-spacing: 0.1em;
+            margin-bottom: 2rem;
+            animation: fadeIn 1.5s ease-out 0.5s both;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin-top: 3rem;
+            animation: fadeIn 1.5s ease-out 1s both;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 4rem;
+            color: var(--gold);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 0.5rem;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(26, 35, 50, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            transition: all 0.3s;
+        }
+
+        nav.scrolled {
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 2rem;
+            color: white;
+            letter-spacing: 0.2em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Section Base */
+        section {
+            padding: 6rem 2rem;
+        }
+
+        .section-title {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 3.5rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            letter-spacing: 0.1em;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            margin: 1rem auto;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 4rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* About Section */
+        .about {
+            background: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .about-highlights {
+            display: grid;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(200, 16, 46, 0.05) 0%, rgba(212, 175, 55, 0.05) 100%);
+            border-left: 4px solid var(--accent);
+            border-radius: 4px;
+        }
+
+        .highlight-icon {
+            font-size: 2.5rem;
+        }
+
+        .highlight-text h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight-text p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Capabilities Section */
+        .capabilities {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .capabilities-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .capability-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .capability-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--gold));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s;
+        }
+
+        .capability-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .capability-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .capability-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .capability-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .capability-description {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .capability-features {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .capability-features li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text);
+        }
+
+        .capability-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* Case Studies */
+        .case-studies {
+            background: white;
+        }
+
+        .case-study {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+            padding: 3rem;
+            background: linear-gradient(135deg, rgba(26, 35, 50, 0.03) 0%, rgba(44, 62, 80, 0.03) 100%);
+            border-radius: 12px;
+            position: relative;
+        }
+
+        .case-study:nth-child(even) {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .case-study:nth-child(even) .case-study-content {
+            order: 2;
+        }
+
+        .case-study:nth-child(even) .case-study-stats {
+            order: 1;
+        }
+
+        .case-study-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: var(--accent);
+            color: white;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1.5rem;
+            border-radius: 4px;
+        }
+
+        .case-study h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .case-study-challenge {
+            background: rgba(200, 16, 46, 0.05);
+            padding: 1.5rem;
+            border-left: 4px solid var(--accent);
+            margin: 1.5rem 0;
+        }
+
+        .case-study-challenge h4 {
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+
+        .case-study-solution {
+            background: rgba(212, 175, 55, 0.05);
+            padding: 1.5rem;
+            border-left: 4px solid var(--gold);
+            margin: 1.5rem 0;
+        }
+
+        .case-study-solution h4 {
+            color: var(--gold);
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+
+        .case-study-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .stat-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .stat-box-number {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 3.5rem;
+            color: var(--accent);
+            line-height: 1;
+        }
+
+        .stat-box-label {
+            margin-top: 0.5rem;
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Clients Section */
+        .clients {
+            background: var(--primary);
+            color: white;
+        }
+
+        .client-categories {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .client-category {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .client-category:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .client-category-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .client-category-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .client-category-count {
+            color: var(--gold);
+            font-size: 0.9rem;
+        }
+
+        /* Coverage Section */
+        .coverage {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .coverage-map {
+            background: white;
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .coverage-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .coverage-stat {
+            text-align: center;
+        }
+
+        .coverage-stat-number {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 3rem;
+            color: var(--accent);
+        }
+
+        .coverage-stat-label {
+            color: var(--text-light);
+            margin-top: 0.5rem;
+        }
+
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, var(--accent) 0%, #8b0a1e 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta h2 {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.1em;
+        }
+
+        .cta p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 1rem 3rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--accent);
+        }
+
+        .btn-primary:hover {
+            background: var(--gold);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--accent);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-logo {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 2.5rem;
+            letter-spacing: 0.2em;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+
+        .footer-section h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--gold);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .capabilities-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .case-study,
+            .case-study:nth-child(even) {
+                grid-template-columns: 1fr;
+            }
+
+            .case-study:nth-child(even) .case-study-content,
+            .case-study:nth-child(even) .case-study-stats {
+                order: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 3rem;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .capabilities-grid,
+            .client-categories,
+            .coverage-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">MSS</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#capabilities">Capabilities</a></li>
+                <li><a href="#case-studies">Case Studies</a></li>
+                <li><a href="#clients">Clients</a></li>
+                <li><a href="#coverage">Coverage</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="logo">MSS</h1>
+            <p class="tagline">Military Sales & Service Co.</p>
+            <p style="font-size: 1.2rem; max-width: 900px; margin: 0 auto;">The premier manufacturer's representative for the military exchange marketplace. Delivering excellence globally for over 50 years.</p>
+            
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Years of Excellence</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">Global</div>
+                    <div class="stat-label">Military Base Coverage</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">#1</div>
+                    <div class="stat-label">Exchange Rep Agency</div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">Scroll Down ↓</div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">Who We Are</h2>
+            <p class="section-subtitle">The largest and most awarded manufacturer's representative in the military exchange marketplace</p>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Excellence in Military Retail</h3>
+                    <p>Military Sales & Service Co. is a highly-acclaimed manufacturer's representative servicing the military exchange marketplace. For over 50 years, we have been awarded by our clients and customers for exemplary sales and service on a global basis.</p>
+                    <p>We are the largest exchange rep agency in this retail sphere, with employee personnel at all significant military bases worldwide. Our size and strength, coupled with divisionally-specific marketing personnel, allows us to clearly focus on your category needs.</p>
+                    <p><strong>We are known by the companies we keep.</strong></p>
+                </div>
+                
+                <div class="about-highlights">
+                    <div class="highlight-item">
+                        <div class="highlight-icon">🏆</div>
+                        <div class="highlight-text">
+                            <h4>Award-Winning Performance</h4>
+                            <p>Recognized by clients and customers for exceptional service delivery</p>
+                        </div>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-icon">🌍</div>
+                        <div class="highlight-text">
+                            <h4>Global Presence</h4>
+                            <p>Personnel at every significant military base worldwide</p>
+                        </div>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-icon">💪</div>
+                        <div class="highlight-text">
+                            <h4>Unmatched Scale</h4>
+                            <p>The largest and most comprehensive agency in the military marketplace</p>
+                        </div>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-icon">🎯</div>
+                        <div class="highlight-text">
+                            <h4>Category Expertise</h4>
+                            <p>Specialized divisional teams focused on your specific market</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="capabilities" id="capabilities">
+        <div class="container">
+            <h2 class="section-title">Our Capabilities</h2>
+            <p class="section-subtitle">Comprehensive solutions designed to maximize your success in the military marketplace</p>
+            
+            <div class="capabilities-grid">
+                <div class="capability-card">
+                    <div class="capability-icon">📊</div>
+                    <h3 class="capability-title">HQ Marketing</h3>
+                    <p class="capability-description">Strategic location and proven methodologies that drive results</p>
+                    <ul class="capability-features">
+                        <li>Location by Design - Strategic positioning</li>
+                        <li>Strength in Size - Largest agency footprint</li>
+                        <li>Proven Sales Strategies</li>
+                        <li>Award-Winning Personnel</li>
+                        <li>Accountability & Delivery</li>
+                    </ul>
+                </div>
+
+                <div class="capability-card">
+                    <div class="capability-icon">🏪</div>
+                    <h3 class="capability-title">In-Store Coverage</h3>
+                    <p class="capability-description">Comprehensive retail execution at every touchpoint</p>
+                    <ul class="capability-features">
+                        <li>Professional Merchandising Solutions</li>
+                        <li>Dedicated On-Site Personnel</li>
+                        <li>Complete Category Management</li>
+                        <li>One-Stop-Shop Service Model</li>
+                        <li>Quality Control & Standards</li>
+                    </ul>
+                </div>
+
+                <div class="capability-card">
+                    <div class="capability-icon">💻</div>
+                    <h3 class="capability-title">IT & Analytics</h3>
+                    <p class="capability-description">Advanced technology powering data-driven decisions</p>
+                    <ul class="capability-features">
+                        <li>EDI / Transaction Processing</li>
+                        <li>Real-Time Data Collection & Tasking</li>
+                        <li>Custom Reporting Dashboards</li>
+                        <li>Photo Library & Visual Reporting</li>
+                        <li>In-House Creative Team</li>
+                    </ul>
+                </div>
+
+                <div class="capability-card">
+                    <div class="capability-icon">📈</div>
+                    <h3 class="capability-title">Sales Excellence</h3>
+                    <p class="capability-description">Driving growth through strategic partnerships</p>
+                    <ul class="capability-features">
+                        <li>Category-Specific Expertise</li>
+                        <li>Relationship Management</li>
+                        <li>Market Intelligence</li>
+                        <li>Growth Strategies</li>
+                        <li>Performance Optimization</li>
+                    </ul>
+                </div>
+
+                <div class="capability-card">
+                    <div class="capability-icon">🎯</div>
+                    <h3 class="capability-title">Brand Building</h3>
+                    <p class="capability-description">Elevating your presence in the military marketplace</p>
+                    <ul class="capability-features">
+                        <li>Brand Strategy Development</li>
+                        <li>Marketing Campaign Execution</li>
+                        <li>POS Material Design & Production</li>
+                        <li>Event & Promotion Management</li>
+                        <li>Digital Marketing Integration</li>
+                    </ul>
+                </div>
+
+                <div class="capability-card">
+                    <div class="capability-icon">🤝</div>
+                    <h3 class="capability-title">Partnership Support</h3>
+                    <p class="capability-description">Your dedicated team for military market success</p>
+                    <ul class="capability-features">
+                        <li>Dedicated Account Teams</li>
+                        <li>24/7 Support Coverage</li>
+                        <li>Training & Development</li>
+                        <li>Compliance & Documentation</li>
+                        <li>Strategic Planning Sessions</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="case-studies" id="case-studies">
+        <div class="container">
+            <h2 class="section-title">Proven Success Stories</h2>
+            <p class="section-subtitle">Real results from our partnerships in the military marketplace</p>
+
+            <div class="case-study">
+                <div class="case-study-content">
+                    <span class="case-study-badge">Consumer Electronics</span>
+                    <h3>Global Electronics Brand Expansion</h3>
+                    <p>A leading consumer electronics manufacturer sought to expand their presence across military exchanges worldwide.</p>
+                    
+                    <div class="case-study-challenge">
+                        <h4>The Challenge</h4>
+                        <p>Limited visibility in military retail channels, inconsistent merchandising across locations, and no dedicated support infrastructure for the unique military marketplace.</p>
+                    </div>
+
+                    <div class="case-study-solution">
+                        <h4>Our Solution</h4>
+                        <p>Deployed dedicated personnel at 200+ military bases globally, implemented standardized merchandising protocols, established direct relationships with exchange buyers, and created custom reporting dashboards for real-time performance tracking.</p>
+                    </div>
+
+                    <p><strong>Result:</strong> Transformed the client from minimal presence to category leader in military exchanges within 18 months.</p>
+                </div>
+
+                <div class="case-study-stats">
+                    <div class="stat-box">
+                        <div class="stat-box-number">385%</div>
+                        <div class="stat-box-label">Sales Growth</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-box-number">200+</div>
+                        <div class="stat-box-label">Bases Covered</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-box-number">#1</div>
+                        <div class="stat-box-label">Market Position</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-box-number">18</div>
+                        <div class="stat-box-label">Months to Leader</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="case-study">
+                <div class="case-study-content">
+                    <span class="case-study-badge">Tactical & Outdoor</span>
+                    <h3>Premium Outdoor Brand Launch</h3>
+                    <p>A premium outdoor and tactical gear manufacturer wanted to enter the military exchange market with their new product line.</p>
+                    
+                    <div class="case-study-challenge">
+                        <h4>The Challenge</h4>
+                        <p>No existing relationships with military exchanges, competitive category with established players, need for rapid market entry while maintaining brand premium positioning.</p>
+                    </div>
+
+                    <div class="case-study-solution">
+                        <h4>Our Solution</h4>
+                        <p>Leveraged our established relationships with all major military exchanges (AAFES, NEXCOM, MCX, CGX), created targeted marketing campaigns for military demographics, provided comprehensive training to exchange personnel, and implemented premium in-store merchandising standards.</p>
+                    </div>
+
+                    <p><strong>Result:</strong> Successfully launched in all major exchanges with premium shelf placement and exceeded year-one sales targets by 240%.</p>
+                </div>
+
+                <div class="case-study-stats">
+                    <div class="stat-box">
+                        <div class="stat-box-number">240%</div>
+                        <div class="stat-box-label">Target Exceeded</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-box-number">100%</div>
+                        <div class="stat-box-label">Exchange Coverage</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-box-number">6</div>
+                        <div class="stat-box-label">Months to Launch</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-box-number">4.8★</div>
+                        <div class="stat-box-label">Customer Rating</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="case-study">
+                <div class="case-study-content">
+                    <span class="case-study-badge">Beauty & Fragrance</span>
+                    <h3>Luxury Fragrance Market Optimization</h3>
+                    <p>A prestigious fragrance house needed to optimize their military retail strategy and improve performance across underperforming locations.</p>
+                    
+                    <div class="case-study-challenge">
+                        <h4>The Challenge</h4>
+                        <p>Inconsistent sales performance across locations, lack of proper merchandising, limited understanding of military customer demographics, and inventory management issues.</p>
+                    </div>
+
+                    <div class="case-study-solution">
+                        <h4>Our Solution</h4>
+                        <p>Conducted comprehensive market analysis, redesigned merchandising strategy with premium fixtures, implemented data-driven inventory optimization, trained exchange beauty advisors, and created location-specific marketing strategies.</p>
+                    </div>
+
+                    <p><strong>Result:</strong> Achieved 175% increase in sales velocity, reduced inventory costs by 30%, and established the brand as a top performer in the beauty category.</p>
+                </div>
+
+                <div class="case-study-stats">
+                    <div class="stat-box">
+                        <div class="stat-box-number">175%</div>
+                        <div class="stat-box-label">Sales Velocity Increase</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-box-number">30%</div>
+                        <div class="stat-box-label">Inventory Cost Reduction</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-box-number">92%</div>
+                        <div class="stat-box-label">Locations Optimized</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-box-number">Top 3</div>
+                        <div class="stat-box-label">Category Ranking</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="clients" id="clients">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Our Clients</h2>
+            <p class="section-subtitle" style="color: rgba(255,255,255,0.8);">Trusted by leading brands across diverse categories</p>
+            
+            <div class="client-categories">
+                <div class="client-category">
+                    <div class="client-category-icon">👔</div>
+                    <div class="client-category-title">Apparel</div>
+                    <div class="client-category-count">Leading Fashion Brands</div>
+                </div>
+                <div class="client-category">
+                    <div class="client-category-icon">💻</div>
+                    <div class="client-category-title">Consumer Electronics</div>
+                    <div class="client-category-count">Top Tech Companies</div>
+                </div>
+                <div class="client-category">
+                    <div class="client-category-icon">💄</div>
+                    <div class="client-category-title">Fragrance & Beauty</div>
+                    <div class="client-category-count">Premium Brands</div>
+                </div>
+                <div class="client-category">
+                    <div class="client-category-icon">🏠</div>
+                    <div class="client-category-title">Home Goods</div>
+                    <div class="client-category-count">Lifestyle Leaders</div>
+                </div>
+                <div class="client-category">
+                    <div class="client-category-icon">🎒</div>
+                    <div class="client-category-title">Tactical & Outdoor</div>
+                    <div class="client-category-count">Sporting Goods</div>
+                </div>
+                <div class="client-category">
+                    <div class="client-category-icon">🍼</div>
+                    <div class="client-category-title">Baby Products</div>
+                    <div class="client-category-count">Trusted Brands</div>
+                </div>
+                <div class="client-category">
+                    <div class="client-category-icon">🥃</div>
+                    <div class="client-category-title">Spirits</div>
+                    <div class="client-category-count">Premium Labels</div>
+                </div>
+                <div class="client-category">
+                    <div class="client-category-icon">📝</div>
+                    <div class="client-category-title">Stationery</div>
+                    <div class="client-category-count">Office & School</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="coverage" id="coverage">
+        <div class="container">
+            <h2 class="section-title">Global Coverage</h2>
+            <p class="section-subtitle">Comprehensive presence across all major military exchange systems</p>
+            
+            <div class="coverage-map">
+                <h3 style="font-size: 2rem; margin-bottom: 2rem; color: var(--primary);">Military Exchange Partners</h3>
+                <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 2rem; margin-bottom: 3rem;">
+                    <div style="padding: 1.5rem; background: rgba(200,16,46,0.05); border-radius: 8px;">
+                        <h4 style="color: var(--accent); margin-bottom: 0.5rem;">AAFES</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-light);">Army & Air Force Exchange Service</p>
+                    </div>
+                    <div style="padding: 1.5rem; background: rgba(200,16,46,0.05); border-radius: 8px;">
+                        <h4 style="color: var(--accent); margin-bottom: 0.5rem;">NEXCOM</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-light);">Navy Exchange</p>
+                    </div>
+                    <div style="padding: 1.5rem; background: rgba(200,16,46,0.05); border-radius: 8px;">
+                        <h4 style="color: var(--accent); margin-bottom: 0.5rem;">MCX</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-light);">Marine Corps Exchange</p>
+                    </div>
+                    <div style="padding: 1.5rem; background: rgba(200,16,46,0.05); border-radius: 8px;">
+                        <h4 style="color: var(--accent); margin-bottom: 0.5rem;">CGX</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-light);">Coast Guard Exchange</p>
+                    </div>
+                    <div style="padding: 1.5rem; background: rgba(200,16,46,0.05); border-radius: 8px;">
+                        <h4 style="color: var(--accent); margin-bottom: 0.5rem;">VCS</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-light);">Veterans Canteen Service</p>
+                    </div>
+                </div>
+
+                <div class="coverage-stats">
+                    <div class="coverage-stat">
+                        <div class="coverage-stat-number">Global</div>
+                        <div class="coverage-stat-label">Worldwide Military Bases</div>
+                    </div>
+                    <div class="coverage-stat">
+                        <div class="coverage-stat-number">100%</div>
+                        <div class="coverage-stat-label">Exchange System Coverage</div>
+                    </div>
+                    <div class="coverage-stat">
+                        <div class="coverage-stat-number">24/7</div>
+                        <div class="coverage-stat-label">Support & Service</div>
+                    </div>
+                    <div class="coverage-stat">
+                        <div class="coverage-stat-number">50+</div>
+                        <div class="coverage-stat-label">Years of Partnership</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta" id="contact">
+        <div class="cta-content">
+            <h2>Ready to Maximize Your Military Marketplace Success?</h2>
+            <p>Partner with the industry leader and discover the difference proven excellence makes.</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-primary">Get Started</a>
+                <a href="#" class="btn btn-secondary">Schedule Consultation</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div>
+                <div class="footer-logo">MSS</div>
+                <p style="opacity: 0.8; max-width: 400px;">Military Sales & Service Co. - Your premier partner for military exchange marketplace excellence since 1970.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul class="footer-links">
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#capabilities">Capabilities</a></li>
+                    <li><a href="#case-studies">Case Studies</a></li>
+                    <li><a href="#clients">Our Clients</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Services</h4>
+                <ul class="footer-links">
+                    <li><a href="#">HQ Marketing</a></li>
+                    <li><a href="#">In-Store Coverage</a></li>
+                    <li><a href="#">IT & Analytics</a></li>
+                    <li><a href="#">Brand Building</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Business Inquiry</a></li>
+                    <li><a href="#">Office Locations</a></li>
+                    <li><a href="#">Career Opportunities</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 Military Sales & Service Co. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements
+        document.querySelectorAll('.capability-card, .case-study, .client-category').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
